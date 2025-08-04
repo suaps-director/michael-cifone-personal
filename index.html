@@ -6,410 +6,469 @@
     <title>Michael Christian Cifone</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Garamond:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Merriweather:wght@300;400;700&family=Inter:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Garamond', serif;
-            background-color: #000;
-            color: #E2D3AD;
+            font-family: 'Merriweather', serif;
+            background-color: #F5F5DC; /* Dark cream / Beige */
+            color: #4A3C2F; /* Deep earthy brown */
         }
         .header-bg {
-            background-color: #000;
+            background-color: #F5F5DC;
+            border-bottom: 1px solid #D2B48C; /* Lighter brown border */
         }
         .text-accent {
-            color: #FFC107; /* A gold color from the logo */
+            color: #FFC107; /* Gold accent from logo */
         }
         .bg-accent {
             background-color: #FFC107;
         }
         .publication-card {
             border-left: 2px solid #FFC107;
+            background-color: #EFEFEF; /* Light gray background for cards */
             transition: all 0.3s ease;
         }
         .publication-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(255, 193, 7, 0.2);
-            background-color: rgba(255, 193, 7, 0.05);
+            box-shadow: 0 5px 15px rgba(210, 180, 140, 0.5);
+            background-color: #EAEAEA;
         }
-        .publication-content, .work-in-progress-content {
+        .publication-content {
             display: none;
         }
         .publication-card.active .publication-content {
             display: block;
         }
-        .work-in-progress-card {
-            border-left: 2px solid #FFC107;
+        .nav-link {
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .nav-link:hover {
+            color: #FFC107;
+            border-bottom: 2px solid #FFC107;
+        }
+        .nav-link.active {
+            color: #FFC107;
+            border-bottom: 2px solid #FFC107;
         }
         .button {
             transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
         .button:hover {
             background-color: #FFD700;
-            color: #1a202c;
+            color: #4A3C2F;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.8);
-            justify-content: center;
-            align-items: center;
+        h1, h2, h3, .nav-link {
+            font-family: 'Cormorant Garamond', serif;
         }
-        .modal-content {
-            background-color: #1a202c;
-            color: #e2d3ad;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #FFC107;
-            width: 90%;
-            max-width: 800px;
-            border-radius: 10px;
-        }
-        .close-button {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: #FFC107;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        .font-sans {
-            font-family: 'Inter', sans-serif;
+        p, ul, li {
+            font-family: 'Merriweather', serif;
         }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Sanity Check: If you see this text, your HTML file is loading correctly. The issue might be with file paths or CSS. -->
-    <div class="header-bg py-8">
-        <div class="container mx-auto px-4 md:px-8">
-            <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
+    <header class="header-bg py-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 md:px-8 flex justify-between items-center">
+            <h1 class="text-3xl font-bold">
+                <a href="#home" class="text-gray-800 hover:text-accent nav-link">M. Cifone</a>
+            </h1>
+            <nav class="hidden md:block">
+                <ul class="flex space-x-8 text-xl">
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#publications" class="nav-link">Publications</a></li>
+                    <li><a href="#essays" class="nav-link">Essays & Drafts</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-2xl focus:outline-none">☰</button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg py-4">
+            <ul class="flex flex-col items-center space-y-4 text-lg">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#publications" class="nav-link">Publications</a></li>
+                <li><a href="#essays" class="nav-link">Essays & Drafts</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 md:px-8 py-16">
+        <!-- Home/Landing Page Section -->
+        <section id="home" class="mb-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-12 md:space-y-0 md:space-x-16">
                 <div class="flex-shrink-0 w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-xl border-4 border-accent">
                     <img src="Cifone Professional HS.jpg" alt="Michael Christian Cifone" class="object-cover w-full h-full">
                 </div>
-                <div class="text-center md:text-left">
+                <div class="text-center md:text-left flex-grow">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-accent">Michael Christian Cifone</h1>
-                    <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-light">Ph.D. in Philosophy</p>
-                    <div class="mt-6 flex flex-col md:flex-row items-center md:items-start md:space-x-8">
-                        <div class="flex items-center space-x-4 mb-4 md:mb-0">
-                            <img src="SUAPS redesigned logo.png" alt="Society for UAP Studies Logo" class="w-16 h-16 rounded-full">
-                            <div>
-                                <p class="text-lg font-bold">Founding Executive Director & President</p>
-                                <p class="text-base font-sans">Society for UAP Studies</p>
-                            </div>
+                    <p class="mt-4 text-xl sm:text-2xl lg:text-3xl font-light text-gray-800">Ph.D. in Philosophy</p>
+                    <p class="mt-6 text-xl text-gray-700">Founding Executive Director & President of the Society for UAP Studies</p>
+                    <p class="mt-2 text-xl text-gray-700">Editor, Limina - The Journal of UAP Studies</p>
+                    <p class="mt-2 text-xl text-gray-700">Visiting Research Fellow, FAU Erlangen (2025-2026)</p>
+                    <div class="mt-8">
+                        <a href="#about" class="inline-block px-6 py-3 bg-accent text-white font-bold rounded-full shadow-lg transition-transform transform hover:scale-105">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 border-b-2 border-accent pb-2">About</h2>
+            <p class="text-lg leading-relaxed text-gray-700">
+                Michael Cifone is the Founding Executive Director and President of the <a href="http://www.societyforuapstudies.org" class="text-blue-600 hover:underline">Society for UAP Studies</a>, a global nonprofit dedicated to advancing UAP study as a rigorous academic field. He is also the Editor of `Limina - The Journal of UAP Studies`. He holds a Ph.D. in Philosophy from the University of Maryland, with a specialization in the philosophy of physics, quantum theory, and the history and conceptual foundations of science. He has an extensive history of teaching philosophy at numerous institutions, including St. John's University, Bronx Community College, and the University of San Francisco. He is a prominent voice in the field, advocating for a pragmatic and meta-theoretically disciplined approach that rejects both dogmatic skepticism and uncritical belief. His research focuses on the conceptual and methodological challenges inherent in studying anomalous phenomena, with his work introducing innovative frameworks to address the “excessive remainder” in UAP data—experiences and correlations that seem to elude conventional scientific explanation. Dr Cifone has been appointed as a Visiting Research Fellow at the Center for Advanced Study in the Humanities at Friedrich-Alexanders Universität in Germany for 2025-2026.
+            </p>
+            <div class="mt-12 space-y-12">
+                <div id="education">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Education</h3>
+                    <ul class="space-y-2 text-lg text-gray-700">
+                        <li><span class="font-bold">2009:</span> Ph.D. in Philosophy, University of Maryland at College Park</li>
+                        <li><span class="font-bold">2007:</span> M.A. in Philosophy, University of Maryland at College Park</li>
+                        <li><span class="font-bold">2000:</span> B.A. (Honors) in Philosophy, Elizabethtown College (Minor degrees in: Physics and Mathematical Science)</li>
+                    </ul>
+                </div>
+                <div id="specialization">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Areas of Specialization & Competence</h3>
+                    <div class="grid md:grid-cols-2 gap-8 text-lg text-gray-700">
+                        <div>
+                            <h4 class="font-bold text-xl mb-2">Specialization:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>The Philosophy and Metaphysics of Natural Science (special focus on Relativity and Quantum Theories)</li>
+                                <li>Philosophy of Physics</li>
+                            </ul>
                         </div>
-                        <div class="text-left md:text-right">
-                            <p class="text-lg font-bold">Visiting Research Fellow (2025-2026)</p>
-                            <p class="text-base font-sans">Center for Advanced Study in the Humanities, FAU Erlangen</p>
+                        <div>
+                            <h4 class="font-bold text-xl mb-2">Competence:</h4>
+                            <ul class="list-disc list-inside space-y-1">
+                                <li>Philosophy of Science</li>
+                                <li>Non-Western Philosophical Traditions (Indian, Chinese, and Japanese philosophies, with a special focus on Buddhist thought)</li>
+                                <li>Ethics</li>
+                                <li>Psychoanalysis (Freud and Lacan)</li>
+                                <li>Critical Theory</li>
+                                <li>History of Philosophy</li>
+                                <li>History of Science (special focus on Classical and Modern Physics)</li>
+                                <li>Logic</li>
+                                <li>Philosophical Foundations of Christian Mysticism</li>
+                                <li>Hegel, Schopenhauer, Nietzsche, Heidegger, Deleuze</li>
+                                <li>Film and Philosophy</li>
+                                <li>Philosophy of Sexuality and Gender</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-    <div class="container mx-auto px-4 md:px-8 py-16">
+        <!-- Publications Section -->
         <section id="publications" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-accent mb-8 border-b border-accent pb-2">Publications</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 border-b-2 border-accent pb-2">Publications</h2>
             <div id="publication-list" class="space-y-6">
                 <!-- Articles -->
-                <h3 class="text-2xl font-bold mt-10 mb-4">Articles</h3>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Articles</h3>
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2025c. "Excessive Remainder: Scientific Possibility, Epistemic Limits, and the UFO Experience." Mindfield Bulletin 17 (1). (Available open access, online only).</p>
+                        <p class="text-lg font-semibold">2025c. "Excessive Remainder: Scientific Possibility, Epistemic Limits, and the UFO Experience." Mindfield Bulletin 17 (1).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Mindfield Bulletin 17(1).</p>
-                        <p class="text-sm font-sans mt-2">Summary: This paper explores the philosophical and epistemic implications of the UFO experience, arguing that it challenges the limits of scientific possibility and knowledge. It delves into the ontological shock and the conceptual frameworks needed to grapple with phenomena that seem to defy conventional scientific explanation.</p>
-                        <a href="pdfs/excessive-remainder.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Mindfield Bulletin 17(1).</p>
+                        <p class="text-sm mt-2">Summary: This paper explores the philosophical and epistemic implications of the UFO experience, arguing that it challenges the limits of scientific possibility and knowledge. It delves into the ontological shock and the conceptual frameworks needed to grapple with phenomena that seem to defy conventional scientific explanation.</p>
+                        <a href="pdfs/excessive-remainder.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2025b. "The New Science of Unidentified Aerospace-Undersea Phenomena (UAP)" (with Kevin Knuth, Philippe Ailleris, Garry Nolan, Wes Watters, et al.); Progress in Aerospace Sciences 156, 101097.</p>
+                        <p class="text-lg font-semibold">2025b. "The New Science of Unidentified Aerospace-Undersea Phenomena (UAP)" (with Kevin Knuth, Philippe Ailleris, Garry Nolan, Wes Watters, et al.); Progress in Aerospace Sciences 156, 101097.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Progress in Aerospace Sciences 156, 101097.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A collaborative work that outlines a new scientific approach to studying Unidentified Aerospace-Undersea Phenomena (UAP). The paper discusses the need for a rigorous, interdisciplinary framework to move beyond anecdotal evidence and establish a foundation for a true science of the phenomena.</p>
-                        <a href="pdfs/new-science-uap.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Progress in Aerospace Sciences 156, 101097.</p>
+                        <p class="text-sm mt-2">Summary: A collaborative work that outlines a new scientific approach to studying Unidentified Aerospace-Undersea Phenomena (UAP). The paper discusses the need for a rigorous, interdisciplinary framework to move beyond anecdotal evidence and establish a foundation for a true science of the phenomena.</p>
+                        <a href="pdfs/new-science-uap.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2025a. "Editorial" Limina The Journal of UAP Studies 2(1): 6-11.</p>
+                        <p class="text-lg font-semibold">2025a. "Editorial" Limina The Journal of UAP Studies 2(1): 6-11.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Limina The Journal of UAP Studies 2(1): 6-11.</p>
-                        <p class="text-sm font-sans mt-2">Summary: An editorial discussing the mission and focus of the journal, highlighting the importance of rigorous academic and interdisciplinary approaches to UAP studies as the field develops.</p>
-                        <a href="https://www.researchgate.net/publication/389670858_One_science_for_both_UFOlogists_and_Astrobiologists" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">View Article</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Limina The Journal of UAP Studies 2(1): 6-11.</p>
+                        <p class="text-sm mt-2">Summary: An editorial discussing the mission and focus of the journal, highlighting the importance of rigorous academic and interdisciplinary approaches to UAP studies as the field develops.</p>
+                        <a href="https://www.researchgate.net/publication/389670858_One_science_for_both_UFOlogists_and_Astrobiologists" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">View Article</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2024. "Editorial"; Limina The Journal of UAP Studies 1 (1): 3-7.</p>
+                        <p class="text-lg font-semibold">2024. "Editorial"; Limina The Journal of UAP Studies 1 (1): 3-7.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Limina The Journal of UAP Studies 1(1): 3-7.</p>
-                        <p class="text-sm font-sans mt-2">Summary: The inaugural editorial of Limina, which introduces the journal's foundational principles and its role in creating a space for scholarly UAP research.</p>
-                        <a href="pdfs/limina-editorial-2024.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Limina The Journal of UAP Studies 1(1): 3-7.</p>
+                        <p class="text-sm mt-2">Summary: The inaugural editorial of Limina, which introduces the journal's foundational principles and its role in creating a space for scholarly UAP research.</p>
+                        <a href="pdfs/limina-editorial-2024.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2022. "Transcendental Skepticism"; The SCU Review, No. 11 (27 October).</p>
+                        <p class="text-lg font-semibold">2022. "Transcendental Skepticism"; The SCU Review, No. 11 (27 October).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">The SCU Review, No. 11 (27 October).</p>
-                        <p class="text-sm font-sans mt-2">Summary: A philosophical exploration of skepticism in the context of extraordinary claims, arguing for a more nuanced and "transcendental" approach that questions the very foundations of knowledge and perception when confronted with anomalous data.</p>
-                        <a href="pdfs/transcendental-skepticism.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">The SCU Review, No. 11 (27 October).</p>
+                        <p class="text-sm mt-2">Summary: A philosophical exploration of skepticism in the context of extraordinary claims, arguing for a more nuanced and "transcendental" approach that questions the very foundations of knowledge and perception when confronted with anomalous data.</p>
+                        <a href="pdfs/transcendental-skepticism.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2016b. "Axioms in Z-Notes on a Scandalous Appropriation of Philosophy out of the Sublimity of the Thing. Part II: Affirmations"; International Journal of Žižek Studies.</p>
+                        <p class="text-lg font-semibold">2016b. "Axioms in Z-Notes on a Scandalous Appropriation of Philosophy out of the Sublimity of the Thing. Part II: Affirmations"; International Journal of Žižek Studies.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">International Journal of Žižek Studies.</p>
-                        <p class="text-sm font-sans mt-2">Summary: The second part of a two-part article that critiques and affirms aspects of Slavoj Žižek's philosophical method, focusing on his use of philosophical concepts and their relationship to "the Thing."</p>
-                        <a href="pdfs/axioms-z-part-ii.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">International Journal of Žižek Studies.</p>
+                        <p class="text-sm mt-2">Summary: The second part of a two-part article that critiques and affirms aspects of Slavoj Žižek's philosophical method, focusing on his use of philosophical concepts and their relationship to "the Thing."</p>
+                        <a href="pdfs/axioms-z-part-ii.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2016a. "Axioms in Z-Notes on a Scandalous Appropriation of Philosophy out of the Sublimity of the Thing. Part I: Negations"; International Journal of Žižek Studies 10 (1).</p>
+                        <p class="text-lg font-semibold">2016a. "Axioms in Z-Notes on a Scandalous Appropriation of Philosophy out of the Sublimity of the Thing. Part I: Negations"; International Journal of Žižek Studies 10 (1).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">International Journal of Žižek Studies 10(1).</p>
-                        <p class="text-sm font-sans mt-2">Summary: The first part of a two-part article that critically analyzes the philosophical foundations of Slavoj Žižek's work, specifically his approach to philosophy and its relation to the sublime.</p>
-                        <a href="pdfs/axioms-z-part-i.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">International Journal of Žižek Studies 10(1).</p>
+                        <p class="text-sm mt-2">Summary: The first part of a two-part article that critically analyzes the philosophical foundations of Slavoj Žižek's work, specifically his approach to philosophy and its relation to the sublime.</p>
+                        <a href="pdfs/axioms-z-part-i.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2014. "Nothingness and Science (A Propaedeutic)", Cosmos and History: The Journal of Natural and Social Philosophy 10 (1): 253-274.</p>
+                        <p class="text-lg font-semibold">2014. "Nothingness and Science (A Propaedeutic)", Cosmos and History: The Journal of Natural and Social Philosophy 10 (1): 253-274.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Cosmos and History: The Journal of Natural and Social Philosophy 10(1): 253-274.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A propaedeutic on the relationship between nothingness and the foundations of natural science, exploring how concepts of emptiness and non-being are integral to scientific understanding and philosophical inquiry.</p>
-                        <a href="pdfs/nothingness-and-science.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Cosmos and History: The Journal of Natural and Social Philosophy 10(1): 253-274.</p>
+                        <p class="text-sm mt-2">Summary: A propaedeutic on the relationship between nothingness and the foundations of natural science, exploring how concepts of emptiness and non-being are integral to scientific understanding and philosophical inquiry.</p>
+                        <a href="pdfs/nothingness-and-science.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2008b. "Why Quantum Mechanics Favors Adynamical and Acausal Interpretations such as Relational Blockworld over Backwardly Causal and Time-Symmetric Rivals" with Michael Silberstein and W.M. Stuckey, Studies in the History and Philosophy of Modern Physics 39 (4): 736-751.</p>
+                        <p class="text-lg font-semibold">2008b. "Why Quantum Mechanics Favors Adynamical and Acausal Interpretations such as Relational Blockworld over Backwardly Causal and Time-Symmetric Rivals" with Michael Silberstein and W.M. Stuckey, Studies in the History and Philosophy of Modern Physics 39 (4): 736-751.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Studies in the History and Philosophy of Modern Physics 39(4): 736-751.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A detailed argument that the Relational Blockworld interpretation offers a more robust and consistent understanding of quantum mechanics by favoring an adynamical and acausal framework over competing models.</p>
-                        <a href="pdfs/quantum-mechanics-favors.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Studies in the History and Philosophy of Modern Physics 39(4): 736-751.</p>
+                        <p class="text-sm mt-2">Summary: A detailed argument that the Relational Blockworld interpretation offers a more robust and consistent understanding of quantum mechanics by favoring an adynamical and acausal framework over competing models.</p>
+                        <a href="pdfs/quantum-mechanics-favors.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2008a. "Reconciling Spacetime and the Quantum: Relational Blockworld and the Quantum Liar Paradox" with W. M. Stuckey and Michael Silberstein; Foundations of Physics 38 (4): 348-383.</p>
+                        <p class="text-lg font-semibold">2008a. "Reconciling Spacetime and the Quantum: Relational Blockworld and the Quantum Liar Paradox" with W. M. Stuckey and Michael Silberstein; Foundations of Physics 38 (4): 348-383.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Foundations of Physics 38(4): 348-383.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A collaborative paper that proposes a way to reconcile spacetime and quantum theory through the "Relational Blockworld" interpretation, addressing the so-called "Quantum Liar Paradox."</p>
-                        <a href="ftp://ftp.math.utah.edu/pub/tex/bib/toc/foundphys.html" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">View Journal Index</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Foundations of Physics 38(4): 348-383.</p>
+                        <p class="text-sm mt-2">Summary: A collaborative paper that proposes a way to reconcile spacetime and quantum theory through the "Relational Blockworld" interpretation, addressing the so-called "Quantum Liar Paradox."</p>
+                        <a href="ftp://ftp.math.utah.edu/pub/tex/bib/toc/foundphys.html" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">View Journal Index</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2006. "Deflating Quantum Mysteries via the Relational Blockworld," with W. M. Stuckey and Michael Silberstein; in Physics Essays 19 (2): 269-283.</p>
+                        <p class="text-lg font-semibold">2006. "Deflating Quantum Mysteries via the Relational Blockworld," with W. M. Stuckey and Michael Silberstein; in Physics Essays 19 (2): 269-283.</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Physics Essays 19(2): 269-283.</p>
-                        <p class="text-sm font-sans mt-2">Summary: This paper uses the Relational Blockworld model to provide a geometric interpretation of non-relativistic quantum mechanics, aiming to "deflate" some of its more perplexing mysteries.</p>
-                        <a href="https://www.researchgate.net/publication/2194953_Deflating_Quantum_Mysteries_via_the_Relational_Blockworld" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">View Article</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Physics Essays 19(2): 269-283.</p>
+                        <p class="text-sm mt-2">Summary: This paper uses the Relational Blockworld model to provide a geometric interpretation of non-relativistic quantum mechanics, aiming to "deflate" some of its more perplexing mysteries.</p>
+                        <a href="https://www.researchgate.net/publication/2194953_Deflating_Quantum_Mysteries_via_the_Relational_Blockworld" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">View Article</a>
                     </div>
                 </div>
                 
                 <!-- Book Chapters -->
-                <h3 class="text-2xl font-bold mt-10 mb-4">Book Chapters</h3>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-4">Book Chapters</h3>
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2007b. "The Relational Blockworld Interpretation of Non-relativistic Quantum Mechanics," with W.M. Stuckey and Michael Silberstein; in Guillaume Adenier, Christopher A. Fuchs and Andrei Khrennikov (eds.) Foundations of Probability and Physics 4, 412-421 (American Institute of Physics: Melville, NY).</p>
+                        <p class="text-lg font-semibold">2007b. "The Relational Blockworld Interpretation of Non-relativistic Quantum Mechanics," with W.M. Stuckey and Michael Silberstein; in Guillaume Adenier, Christopher A. Fuchs and Andrei Khrennikov (eds.) Foundations of Probability and Physics 4, 412-421 (American Institute of Physics: Melville, NY).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Foundations of Probability and Physics 4.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A chapter that provides a detailed overview of the Relational Blockworld interpretation and its application to non-relativistic quantum mechanics, situating it within the broader context of foundational physics.</p>
-                        <a href="pdfs/relational-blockworld-interpretation.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Foundations of Probability and Physics 4.</p>
+                        <p class="text-sm mt-2">Summary: A chapter that provides a detailed overview of the Relational Blockworld interpretation and its application to non-relativistic quantum mechanics, situating it within the broader context of foundational physics.</p>
+                        <a href="pdfs/relational-blockworld-interpretation.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2007a. "An Argument for 4D Blockworld from a Geometric Interpretation of Nonrelativistic Quantum Mechanics," with Michael Silberstein and W. M. Stuckey; in Petkov (ed.) Relativity and the Dimensionality of the World (Springer Verlag "Fundamental Theories of Physics" series).</p>
+                        <p class="text-lg font-semibold">2007a. "An Argument for 4D Blockworld from a Geometric Interpretation of Nonrelativistic Quantum Mechanics," with Michael Silberstein and W. M. Stuckey; in Petkov (ed.) Relativity and the Dimensionality of the World (Springer Verlag "Fundamental Theories of Physics" series).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Relativity and the Dimensionality of the World.</p>
-                        <p class="text-sm font-sans mt-2">Summary: This chapter presents a geometric argument for a 4D blockworld ontology based on a new interpretation of non-relativistic quantum mechanics.</p>
-                        <a href="pdfs/argument-for-blockworld.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Relativity and the Dimensionality of the World.</p>
+                        <p class="text-sm mt-2">Summary: This chapter presents a geometric argument for a 4D blockworld ontology based on a new interpretation of non-relativistic quantum mechanics.</p>
+                        <a href="pdfs/argument-for-blockworld.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">2005. "Reversing the Arrow of Explanation in the Relational Blockworld: Why Temporal Becoming, the Dynamical Brain and the External World Are 'In The Mind" (World Scientific Press, Conference Proceedings for: Endophysics, Time, Quantum and the Subjective, co-authored with W. M. Stuckey and Michael Silberstein).</p>
+                        <p class="text-lg font-semibold">2005. "Reversing the Arrow of Explanation in the Relational Blockworld: Why Temporal Becoming, the Dynamical Brain and the External World Are 'In The Mind" (World Scientific Press, Conference Proceedings for: Endophysics, Time, Quantum and the Subjective, co-authored with W. M. Stuckey and Michael Silberstein).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Conference Proceedings for: Endophysics, Time, Quantum and the Subjective.</p>
-                        <p class="text-sm font-sans mt-2">Summary: A paper that re-examines the concept of time and reality through the Relational Blockworld lens, suggesting that temporal becoming and the external world may be best understood as subjective experiences.</p>
-                        <a href="pdfs/reversing-the-arrow.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Conference Proceedings for: Endophysics, Time, Quantum and the Subjective.</p>
+                        <p class="text-sm mt-2">Summary: A paper that re-examines the concept of time and reality through the Relational Blockworld lens, suggesting that temporal becoming and the external world may be best understood as subjective experiences.</p>
+                        <a href="pdfs/reversing-the-arrow.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- NEW SECTION for Essays Under Development -->
-        <section id="essays-for-workshop" class="mb-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-accent mb-8 border-b border-accent pb-2">Essays & Draft Papers for Workshop</h2>
-            <p class="text-sm font-sans italic mb-4">The following essays are works in progress and are provided for discussion purposes only. Please do not cite without permission.</p>
+        <!-- Essays Under Development Section -->
+        <section id="essays" class="mb-16">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 border-b-2 border-accent pb-2">Essays & Draft Papers for Workshop</h2>
+            <p class="text-sm italic text-red-600 mb-4">The following essays are works in progress and are provided for discussion purposes only. Please do not cite without permission.</p>
             <div id="workshop-papers-list" class="space-y-6">
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">"Affect of the Impossible"</p>
+                        <p class="text-lg font-semibold">"Affect of the Impossible"</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">Summary: This paper argues that Unidentified Anomalous Phenomena (UAP) function as a "limit-experience" for our regimes of knowledge, acting as a powerful affective and political vector. By developing a new framework called "Existential Empiricism," the paper aims to provide a rational approach to the uncanny and the "excessive remainder" of UAP data that defies conventional explanation, thereby arguing for a new, holistic Wissenschaft capable of engaging with the "weird."</p>
-                        <a href="pdfs/affect-of-the-impossible.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">Summary: This paper argues that Unidentified Anomalous Phenomena (UAP) function as a "limit-experience" for our regimes of knowledge, acting as a powerful affective and political vector. By developing a new framework called "Existential Empiricism," the paper aims to provide a rational approach to the uncanny and the "excessive remainder" of UAP data that defies conventional explanation, thereby arguing for a new, holistic Wissenschaft capable of engaging with the "weird."</p>
+                        <a href="pdfs/affect-of-the-impossible.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">"Existential Empiricism"</p>
+                        <p class="text-lg font-semibold">"Existential Empiricism"</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">A work in progress that introduces a new philosophical framework, Existential Empiricism, which seeks to bridge the gap between subjective experience and objective data, particularly in the context of anomalous phenomena.</p>
-                        <a href="pdfs/existential-empiricism.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">A work in progress that introduces a new philosophical framework, Existential Empiricism, which seeks to bridge the gap between subjective experience and objective data, particularly in the context of anomalous phenomena.</p>
+                        <a href="pdfs/existential-empiricism.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">"Fire In The Sky: UAP, Climate Change and the Political Economic Future of Human Society" (for an edited volume being prepared for 2025-26).</p>
+                        <p class="text-lg font-semibold">"Fire In The Sky: UAP, Climate Change and the Political Economic Future of Human Society" (for an edited volume being prepared for 2025-26).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">This essay explores the political and economic implications of UAP phenomena in the context of climate change. A draft of this paper is available for download.</p>
-                        <a href="pdfs/fire-in-the-sky-draft.pdf" class="download-link mt-4 inline-block bg-accent text-black font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">This essay explores the political and economic implications of UAP phenomena in the context of climate change. A draft of this paper is available for download.</p>
+                        <a href="pdfs/fire-in-the-sky-draft.pdf" class="download-link mt-4 inline-block bg-accent text-white font-bold py-2 px-4 rounded-full button" target="_blank">Download PDF</a>
                     </div>
                 </div>
-                <div class="publication-card p-6 rounded-lg cursor-pointer transition-colors duration-200">
+                <div class="publication-card p-6 rounded-lg cursor-pointer">
                     <div class="flex justify-between items-center">
-                        <p class="text-lg font-sans font-semibold">"Rational Responses To Extraordinary Hypotheses" (with Kevin Knuth and Wes Watters; in preparation for Entropy).</p>
+                        <p class="text-lg font-semibold">"Rational Responses To Extraordinary Hypotheses" (with Kevin Knuth and Wes Watters; in preparation for Entropy).</p>
                         <button class="toggle-button text-xl font-bold">+</button>
                     </div>
-                    <div class="publication-content mt-4 border-t border-gray-700 pt-4">
-                        <p class="text-sm font-sans italic">A philosophical inquiry into the problem of UFO evidence. This is a work in progress and not yet available for download.</p>
+                    <div class="publication-content mt-4 border-t border-gray-300 pt-4 text-gray-700">
+                        <p class="text-sm italic">A philosophical inquiry into the problem of UFO evidence. This is a work in progress and not yet available for download.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="works-in-progress">
-            <h2 class="text-3xl sm:text-4xl font-bold text-accent mb-8 border-b border-accent pb-2">Other Works in Progress</h2>
-            <div id="works-in-progress-list" class="space-y-6">
-                <div class="work-in-progress-card p-6 rounded-lg">
-                    <p class="text-lg font-sans font-semibold">"Beyond Cold Cases: Bringing the Science of UAP Down To Earth" (with Wes Watters, for the European Astrobiology Institute's conference in Kiruna, Sweden; Sept. 2024).</p>
-                </div>
-                <div class="work-in-progress-card p-6 rounded-lg">
-                    <p class="text-lg font-sans font-semibold">"Alien Matters: Thinking Normatively About UAP" (with Michael Uhall).</p>
-                </div>
-                <div class="work-in-progress-card p-6 rounded-lg">
-                    <p class="text-lg font-sans font-semibold">"Into the 'Workshop' of Being: The Place and Necessity of Theology and the Religious in the UFO Experience" (submission in preparation for special issue of Limina The Journal of UAP Studies on Religious Studies and Theology and UAP).</p>
-                </div>
-            </div>
-        </section>
-
+        <!-- Contact Section -->
         <section id="contact" class="mt-16">
-            <h2 class="text-3xl sm:text-4xl font-bold text-accent mb-8 border-b border-accent pb-2">Contact</h2>
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-8 border-b-2 border-accent pb-2">Contact</h2>
             <div class="flex flex-col md:flex-row md:space-x-8 space-y-4 md:space-y-0">
                 <div>
                     <p class="font-bold text-lg">Personal Email:</p>
-                    <a href="mailto:cifonemc@gmail.com" class="text-lg text-white hover:underline">cifonemc@gmail.com</a>
+                    <a href="mailto:cifonemc@gmail.com" class="text-lg text-blue-600 hover:underline">cifonemc@gmail.com</a>
                 </div>
                 <div>
                     <p class="font-bold text-lg">Professional Email:</p>
-                    <a href="mailto:director@societyforuapstudies.org" class="text-lg text-white hover:underline">director@societyforuapstudies.org</a>
+                    <a href="mailto:director@societyforuapstudies.org" class="text-lg text-blue-600 hover:underline">director@societyforuapstudies.org</a>
                 </div>
             </div>
         </section>
 
     </div>
 
-    <!-- Modal for displaying publication content -->
-    <div id="publicationModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <div id="modal-content-inner">
-                <!-- Content will be injected here -->
-            </div>
-        </div>
-    </div>
-
     <script>
-        const publicationList = document.getElementById('publication-list');
-        const workshopPapersList = document.getElementById('workshop-papers-list');
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = document.querySelectorAll('header a');
 
-        function setupCardInteraction(container) {
-            container.addEventListener('click', (event) => {
-                const card = event.target.closest('.publication-card');
-                if (card) {
-                    const content = card.querySelector('.publication-content');
-                    const toggleButton = card.querySelector('.toggle-button');
-
-                    card.classList.toggle('active');
-
-                    if (card.classList.contains('active')) {
-                        toggleButton.textContent = '-';
-                    } else {
-                        toggleButton.textContent = '+';
-                    }
-                }
+            // Mobile menu toggle
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
             });
+
+            // Smooth scroll and active link highlighting
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        e.preventDefault();
+                        const targetId = href.substring(1);
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 80, // Adjust for fixed header
+                                behavior: 'smooth'
+                            });
+                        }
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        navLinks.forEach(link => {
+                            if (link.getAttribute('href') === `#${entry.target.id}`) {
+                                link.classList.add('active');
+                            } else {
+                                link.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Toggle publication content visibility
+        function setupCardInteraction() {
+            const publicationList = document.getElementById('publication-list');
+            const workshopPapersList = document.getElementById('workshop-papers-list');
+
+            const toggleContent = (container) => {
+                container.addEventListener('click', (event) => {
+                    const card = event.target.closest('.publication-card');
+                    if (card) {
+                        const content = card.querySelector('.publication-content');
+                        const toggleButton = card.querySelector('.toggle-button');
+
+                        card.classList.toggle('active');
+
+                        if (card.classList.contains('active')) {
+                            toggleButton.textContent = '—';
+                        } else {
+                            toggleButton.textContent = '+';
+                        }
+                    }
+                });
+            };
+
+            toggleContent(publicationList);
+            toggleContent(workshopPapersList);
         }
-
-        setupCardInteraction(publicationList);
-        setupCardInteraction(workshopPapersList);
-
-        const publicationModal = document.getElementById('publicationModal');
-        const closeModalButton = document.querySelector('.close-button');
-        const modalContentInner = document.getElementById('modal-content-inner');
-        
-        closeModalButton.addEventListener('click', () => {
-            publicationModal.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === publicationModal) {
-                publicationModal.style.display = 'none';
-            }
-        });
+        setupCardInteraction();
     </script>
 </body>
 </html>
