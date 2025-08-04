@@ -90,6 +90,7 @@
 </head>
 <body class="antialiased">
 
+    <!-- Sanity Check: If you see this text, your HTML file is loading correctly. The issue might be with file paths or CSS. -->
     <div class="header-bg py-8">
         <div class="container mx-auto px-4 md:px-8">
             <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-12">
