@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Christian Cifone — Philosopher · Editor · Institution-Builder</title>
+    <meta name="description" content="Official site of Michael Christian Cifone: philosopher of science, Founding Executive Director of the Society for UAP Studies, Founding Editor of Limina, CAS-E Fellow.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg:           #F4F2ED;
+            --surface:      #FDFCF9;
+            --surface-2:    #F8F6F1;
+            --border:       #E0DDD5;
+            --border-mid:   #C8C5BB;
+            --text-primary: #18160F;
+            --text-secondary: #56524A;
+            --text-tertiary: #96928A;
+            --gold:         #7A5C0C;
+            --gold-light:   #A07820;
+            --gold-faint:   rgba(122,92,12,0.07);
+            --nav-bg:       #18160F;
+            --nav-border:   rgba(255,255,255,0.07);
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--bg);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { color: var(--gold); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--gold-light); }
+
+        /* layout */
+        .outer { max-width: 1020px; margin: 0 auto; padding: 0 40px; }
+
+        /* nav */
+        nav {
+            background: var(--nav-bg);
+            border-bottom: 1px solid var(--nav-border);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .nav-inner {
+            max-width: 1020px; margin: 0 auto; padding: 15px 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-mark {
+            font-family: 'EB Garamond', serif; font-size: 1rem;
+            color: rgba(255,255,255,0.82); letter-spacing: 0.02em;
+        }
+        .nav-mark em { color: #C49A28; font-style: normal; }
+        .nav-links { display: flex; gap: 26px; }
+        .nav-links a {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.42); transition: color 0.2s;
+        }
+        .nav-links a:hover { color: rgba(255,255,255,0.85); }
+
+        /* divider */
+        .rule { height: 1px; background: var(--border); }
+        .rule-gold { height: 1px; background: linear-gradient(90deg, transparent, rgba(122,92,12,0.3), transparent); }
+
+        /* HERO — Gwern density-first: no scaffolding, content opens immediately */
+        .hero {
+            background: var(--surface);
+            padding: 80px 0 72px;
+            border-bottom: 1px solid var(--border);
+        }
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.64rem;
+            text-transform: uppercase; letter-spacing: 0.22em; color: var(--gold);
+            display: block; margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 400; line-height: 1.08; letter-spacing: -0.01em;
+            color: var(--text-primary); margin-bottom: 24px;
+        }
+        /* Mod voice-specificity: the opening sentence is the design */
+        .hero-voice {
+            font-family: 'EB Garamond', serif; font-size: 1.35rem;
+            font-style: italic; font-weight: 400;
+            color: var(--text-primary);
+            max-width: 760px; line-height: 1.55; margin-bottom: 32px;
+            border-left: 2px solid var(--border-mid);
+            padding-left: 20px;
+        }
+        .hero-capsule {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;
+        }
+        .cap {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--text-secondary); border: 1px solid var(--border-mid);
+            padding: 5px 11px; border-radius: 1px;
+        }
+        .cap.gold { color: var(--gold); border-color: rgba(122,92,12,0.3); background: var(--gold-faint); }
+
+        /* sections — Noema rhythm: alternating surface/bg */
+        section { padding: 68px 0; border-bottom: 1px solid var(--border); }
+
+        /* Noema essayistic labels — not taxonomy but prose */
+        .sec-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold);
+            display: block; margin-bottom: 9px;
+        }
+        .sec-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(1.5rem, 2.8vw, 2.15rem);
+            font-weight: 400; line-height: 1.15;
+            color: var(--text-primary); margin-bottom: 6px;
+        }
+        .sec-lead {
+            font-family: 'EB Garamond', serif; font-size: 1.08rem;
+            font-style: italic; color: var(--text-secondary);
+            max-width: 660px; margin-bottom: 40px; line-height: 1.6;
+        }
+
+        /* ABOUT -- compact professional sketch */
+        #about { padding: 44px 0 48px; }
+        .about-head { max-width: 760px; margin-bottom: 24px; }
+        .about-head .sec-title {
+            font-size: clamp(1.35rem, 2.35vw, 1.85rem);
+            max-width: 720px;
+        }
+        .about-head .sec-lead { margin-bottom: 0; max-width: 700px; }
+        .about-grid {
+            display: grid; grid-template-columns: 230px 1fr;
+            gap: 0 42px; align-items: start;
+        }
+        .bio-compact { max-width: 710px; }
+        .bio-summary {
+            font-size: 0.96rem; color: var(--text-secondary);
+            line-height: 1.75; margin-bottom: 18px; max-width: 660px;
+        }
+        .bio-summary strong { color: var(--text-primary); font-weight: 500; }
+        .bio-facts {
+            display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px; background: var(--border); border: 1px solid var(--border);
+            margin: 0 0 16px;
+        }
+        .bio-fact { background: var(--surface); padding: 16px 17px; }
+        .bio-fact span {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.56rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+            display: block; margin-bottom: 6px;
+        }
+        .bio-fact p { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.62; }
+        .bio-note {
+            font-size: 0.89rem; color: var(--text-secondary);
+            line-height: 1.75; margin-bottom: 0;
+        }
+        .bio-more { max-height: 0; overflow: hidden; transition: max-height 0.45s ease; }
+        .bio-more.open { max-height: 760px; }
+        .bio-more-inner { padding-top: 14px; }
+        .bio-more p {
+            font-size: 0.86rem; color: var(--text-secondary);
+            margin-bottom: 0.9em; line-height: 1.72;
+        }
+        .bio-more p:last-child { margin-bottom: 0; }
+        .bio-more strong { color: var(--text-primary); font-weight: 500; }
+        .bio-toggle {
+            margin-top: 14px; display: inline-flex; align-items: center;
+            gap: 7px; font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.12em; color: var(--gold);
+            cursor: pointer; background: none; border: none; padding: 0;
+            transition: color 0.2s;
+        }
+        .bio-toggle:hover { color: var(--gold-light); }
+        .bio-toggle .arr { transition: transform 0.3s; display: inline-block; }
+        .bio-toggle.open .arr { transform: rotate(180deg); }
+
+        /* dossier */
+        .dossier { padding-top: 2px; }
+        .dos-block { margin-bottom: 18px; }
+        .dos-block:last-child { margin-bottom: 0; }
+        .dos-block h4 {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.57rem;
+            text-transform: uppercase; letter-spacing: 0.16em;
+            color: var(--text-tertiary); margin-bottom: 7px;
+            padding-bottom: 5px; border-bottom: 1px solid var(--border);
+        }
+        .dos-block p, .dos-block a {
+            font-size: 0.8rem; color: var(--text-secondary);
+            line-height: 1.55; display: block; margin-bottom: 2px;
+        }
+        .dos-block a { color: var(--gold); }
+        .dos-block a:hover { color: var(--gold-light); }
+
+        /* ROLES grid */
+        .roles-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+            gap: 1px; background: var(--border); border: 1px solid var(--border);
+        }
+        .role-card { background: var(--surface); padding: 26px 24px; transition: background 0.2s; }
+        .role-card:hover { background: var(--surface-2); }
+        .rc-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            text-transform: uppercase; letter-spacing: 0.14em; color: var(--gold);
+            margin-bottom: 9px; display: block;
+        }
+        .role-card h3 {
+            font-family: 'EB Garamond', serif; font-size: 1.05rem;
+            font-weight: 400; color: var(--text-primary);
+            margin-bottom: 7px; line-height: 1.3;
+        }
+        .role-card p { font-size: 0.83rem; color: var(--text-secondary); line-height: 1.65; }
+
+        /* RESEARCH PROGRAM */
+        .rp-box {
+            border-left: 2px solid var(--border-mid);
+            padding-left: 28px; margin-bottom: 28px;
+        }
+        .rp-box p {
+            font-size: 0.97rem; color: var(--text-secondary);
+            margin-bottom: 1.1em; line-height: 1.8;
+        }
+        .rp-box p:last-child { margin-bottom: 0; }
+        .rp-box strong { color: var(--text-primary); font-weight: 500; }
+        .rp-box em { font-style: italic; }
+
+        .rp-levels {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1px; background: var(--border);
+            border: 1px solid var(--border); margin: 28px 0;
+        }
+        .rp-level { background: var(--surface); padding: 20px 18px; }
+        .rp-level .lv {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+            margin-bottom: 7px; display: block;
+        }
+        .rp-level h4 {
+            font-family: 'EB Garamond', serif; font-size: 0.97rem;
+            font-weight: 500; color: var(--text-primary); margin-bottom: 7px;
+        }
+        .rp-level p { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.62; }
+
+        .rp-taxonomy {
+            display: grid; grid-template-columns: minmax(0, 1.15fr) 300px;
+            gap: 30px; align-items: center;
+            background: var(--surface-2); border: 1px solid var(--border);
+            padding: 28px 30px; margin: 30px 0;
+        }
+        .rp-tax-copy h3, .rp-frontiers h3 {
+            font-family: 'EB Garamond', serif; font-size: 1.16rem;
+            font-weight: 400; color: var(--text-primary); margin-bottom: 9px;
+            line-height: 1.3;
+        }
+        .rp-tax-copy p, .rp-frontiers p {
+            font-size: 0.88rem; color: var(--text-secondary);
+            line-height: 1.75; margin-bottom: 1em;
+        }
+        .rp-tax-copy p:last-child, .rp-frontiers p:last-child { margin-bottom: 0; }
+        .rp-tax-copy strong, .rp-frontiers strong { color: var(--text-primary); font-weight: 500; }
+        .rp-diagram {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 18px 16px 14px;
+        }
+        .rp-diagram svg { width: 100%; height: auto; display: block; }
+        .diagram-caption {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.55rem;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: var(--text-tertiary); text-align: center;
+            margin-top: 9px; line-height: 1.5;
+        }
+        .rp-zone-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 1px; background: var(--border); border: 1px solid var(--border);
+            margin: 20px 0 30px;
+        }
+        .rp-zone { background: var(--surface); padding: 18px 16px; }
+        .rp-zone.d-zone { background: linear-gradient(180deg, var(--surface), var(--gold-faint)); }
+        .zone-kicker {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.56rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+            display: block; margin-bottom: 7px;
+        }
+        .rp-zone h4 {
+            font-family: 'EB Garamond', serif; font-size: 0.98rem;
+            font-weight: 500; color: var(--text-primary); line-height: 1.28;
+            margin-bottom: 7px;
+        }
+        .rp-zone p { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.62; }
+        .rp-frontiers {
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 25px 0 27px; margin: 30px 0;
+        }
+        .rp-frontier-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1px; background: var(--border); border: 1px solid var(--border);
+            margin-top: 16px;
+        }
+        .rp-frontier {
+            background: var(--surface); padding: 15px 16px 14px;
+            font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6;
+        }
+        .rp-frontier span {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.55rem;
+            text-transform: uppercase; letter-spacing: 0.13em; color: var(--gold);
+            display: block; margin-bottom: 5px;
+        }
+
+        /* PRESS — Noema pull-quote register */
+        .press-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .press-card {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 26px 26px 22px; position: relative; transition: border-color 0.2s;
+        }
+        .press-card:hover { border-color: var(--border-mid); }
+        .press-card::before {
+            content: '\201C'; position: absolute; top: 12px; left: 20px;
+            font-family: 'EB Garamond', serif; font-size: 2.8rem;
+            color: rgba(122,92,12,0.13); line-height: 1;
+        }
+        .press-card blockquote {
+            font-family: 'EB Garamond', serif; font-size: 1.05rem;
+            font-style: italic; color: var(--text-primary);
+            line-height: 1.65; margin-bottom: 16px; padding-top: 14px;
+        }
+        .press-src {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.59rem;
+            text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-tertiary);
+        }
+        .press-src a { color: var(--gold); }
+        .press-also {
+            margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border);
+        }
+        .press-also-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.59rem;
+            text-transform: uppercase; letter-spacing: 0.18em;
+            color: var(--text-tertiary); margin-bottom: 10px; display: block;
+        }
+        .outlet-strip { display: flex; flex-wrap: wrap; gap: 6px 18px; align-items: center; }
+        .outlet { font-family: 'EB Garamond', serif; font-size: 0.92rem; font-style: italic; color: var(--text-secondary); }
+        .outlet a { color: var(--text-secondary); }
+        .outlet a:hover { color: var(--gold); }
+        .dot { color: var(--border-mid); font-size: 0.75rem; }
+
+        /* BLOG HIGHLIGHTS */
+        .blog-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px; margin-top: 6px;
+        }
+        .blog-card {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 24px 24px 22px; transition: border-color 0.2s, background 0.2s;
+        }
+        .blog-card:hover { background: var(--surface-2); border-color: var(--border-mid); }
+        .blog-date {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.57rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+            display: block; margin-bottom: 9px;
+        }
+        .blog-card h3 {
+            font-family: 'EB Garamond', serif; font-size: 1.08rem;
+            font-weight: 400; color: var(--text-primary); line-height: 1.32;
+            margin-bottom: 8px;
+        }
+        .blog-card h3 a { color: var(--text-primary); }
+        .blog-card h3 a:hover { color: var(--gold); }
+        .blog-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; }
+        .blog-link {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold);
+            display: inline-block; margin-top: 12px;
+        }
+
+        /* PUBLICATIONS */
+        .pub-group { margin-bottom: 40px; }
+        .pub-group-label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.59rem;
+            text-transform: uppercase; letter-spacing: 0.18em; color: var(--text-tertiary);
+            padding-bottom: 8px; border-bottom: 1px solid var(--border); margin-bottom: 0;
+        }
+        .pub-item {
+            padding: 16px 0; border-bottom: 1px solid var(--border);
+            display: grid; grid-template-columns: 58px 1fr; gap: 0 16px;
+        }
+        .pub-item:last-child { border-bottom: none; }
+        .pub-yr {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            color: var(--text-tertiary); padding-top: 3px;
+        }
+        .pub-title {
+            font-family: 'EB Garamond', serif; font-size: 1.0rem;
+            font-style: italic; color: var(--text-primary);
+            margin-bottom: 3px; line-height: 1.4;
+        }
+        .pub-title a { color: var(--text-primary); }
+        .pub-title a:hover { color: var(--gold); }
+        .pub-venue { font-size: 0.81rem; color: var(--text-secondary); }
+        .pub-coauth { color: var(--text-tertiary); font-size: 0.78rem; }
+        .tag {
+            display: inline-block; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 2px 6px; border-radius: 1px; margin-left: 6px; vertical-align: 2px;
+        }
+        .tag-gold { background: var(--gold-faint); color: var(--gold); border: 1px solid rgba(122,92,12,0.22); }
+        .tag-grey { background: #F0EEE8; color: var(--text-tertiary); border: 1px solid var(--border); }
+        .tag-forthcoming { background: #f0f5f0; color: #4a7a4a; border: 1px solid #b8d0b8; }
+
+        /* SIRIs */
+        .siri-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+        .siri-card {
+            background: var(--surface); border: 1px solid var(--border);
+            padding: 28px; transition: border-color 0.2s, background 0.2s;
+        }
+        .siri-card:hover { background: var(--surface-2); border-color: var(--border-mid); }
+        .siri-cluster {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+            text-transform: uppercase; letter-spacing: 0.15em; color: var(--gold);
+            margin-bottom: 10px; display: block;
+        }
+        .siri-card h3 {
+            font-family: 'EB Garamond', serif; font-size: 1.08rem;
+            font-weight: 400; color: var(--text-primary);
+            margin-bottom: 9px; line-height: 1.3;
+        }
+        .siri-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 12px; }
+        .siri-status {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+            color: var(--text-tertiary); text-transform: uppercase; letter-spacing: 0.08em;
+            margin-top: 2px;
+        }
+        .siri-status span { color: #5a9a5a; }
+        .siri-link {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold);
+            display: inline-block; margin-top: 10px;
+        }
+
+        /* PRESENTATIONS */
+        .pres-item {
+            padding: 15px 0; border-bottom: 1px solid var(--border);
+            display: grid; grid-template-columns: 64px 1fr; gap: 0 16px;
+        }
+        .pres-item:last-child { border-bottom: none; }
+        .pres-yr {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            color: var(--text-tertiary); padding-top: 2px;
+        }
+        .pres-title {
+            font-family: 'EB Garamond', serif; font-size: 0.98rem;
+            font-style: italic; color: var(--text-primary); margin-bottom: 3px;
+        }
+        .pres-venue { font-size: 0.81rem; color: var(--text-secondary); }
+        .ptag {
+            display: inline-block; font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 2px 6px; border-radius: 1px; margin-left: 6px; vertical-align: 2px;
+        }
+        .ptag-up { background: #f0f5f0; color: #4a7a4a; border: 1px solid #b8d0b8; }
+        .ptag-ev { background: #F0EEE8; color: var(--text-tertiary); border: 1px solid var(--border); }
+        .ptag-inv { background: var(--gold-faint); color: var(--gold); border: 1px solid rgba(122,92,12,0.22); }
+
+        /* CV list */
+        .cv-list { list-style: none; }
+        .cv-item {
+            display: grid; grid-template-columns: 100px 1fr; gap: 0 18px;
+            padding: 13px 0; border-bottom: 1px solid var(--border);
+        }
+        .cv-item:last-child { border-bottom: none; }
+        .cv-date { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text-tertiary); padding-top: 2px; }
+        .cv-title { font-weight: 500; color: var(--text-primary); margin-bottom: 2px; font-size: 0.91rem; }
+        .cv-sub { font-size: 0.81rem; color: var(--text-secondary); }
+
+        /* CONTACT */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .contact-col h3 {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
+            text-transform: uppercase; letter-spacing: 0.15em;
+            color: var(--text-tertiary); margin-bottom: 14px;
+        }
+        .contact-col p { font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.65; }
+        .btn-gold {
+            display: inline-block; padding: 10px 20px;
+            border: 1px solid rgba(122,92,12,0.45); color: var(--gold);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+            text-transform: uppercase; letter-spacing: 0.1em; margin-top: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .btn-gold:hover { background: var(--gold); color: white; }
+
+        /* footer */
+        footer { background: var(--nav-bg); padding: 32px 0; }
+        .foot-inner {
+            max-width: 1020px; margin: 0 auto; padding: 0 40px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        footer p { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.28); letter-spacing: 0.06em; }
+        .foot-links { display: flex; gap: 20px; }
+        .foot-links a { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: 0.08em; }
+        .foot-links a:hover { color: #C49A28; }
+
+        /* scroll reveal */
+        .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.48s ease, transform 0.48s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+
+        /* responsive */
+        @media (max-width: 820px) {
+            .outer, .nav-inner, .foot-inner { padding-left: 22px; padding-right: 22px; }
+            .hero { padding: 60px 0 52px; }
+            #about { padding: 38px 0 42px; }
+            .about-grid { grid-template-columns: 1fr; gap: 26px 0; }
+            .dossier { order: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 16px 22px; }
+            .bio-facts { grid-template-columns: 1fr; }
+            .rp-levels, .rp-zone-grid { grid-template-columns: 1fr; }
+            .rp-taxonomy { grid-template-columns: 1fr; padding: 22px 20px; }
+            .rp-diagram { max-width: 340px; margin: 0 auto; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .foot-inner { flex-direction: column; gap: 10px; text-align: center; }
+        }
+        @media (max-width: 560px) {
+            .dossier { grid-template-columns: 1fr; }
+            .hero-capsule { gap: 6px; }
+            .pub-item, .pres-item, .cv-item { grid-template-columns: 1fr; gap: 4px 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="nav-inner">
+        <span class="nav-mark">Michael Christian Cifone <em>·</em> Ph.D.</span>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#roles">Work</a>
+            <a href="#research-program">Research</a>
+            <a href="#press">Press</a>
+            <a href="#blog">Blog</a>
+            <a href="#publications">Publications</a>
+            <a href="#siri">Initiatives</a>
+            <a href="#presentations">Talks</a>
+            <a href="#media">Media</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO -->
+<div style="background: var(--surface);">
+    <header class="outer hero">
+        <span class="hero-eyebrow">Philosopher · Editor · Institution-Builder · Occasional Hermeonaut</span>
+        <h1>Michael Christian Cifone</h1>
+        <p class="hero-voice">Building the collaborative scholarly infrastructure for studying phenomena that mainstream science has been structurally prevented from taking seriously &mdash; and asking what that prevention reveals about the politics of knowledge.</p>
+        <div class="hero-capsule">
+            <span class="cap gold">Founding ED & President, Society for UAP Studies</span>
+            <span class="cap">Ph.D. Philosophy of Science · University of Maryland</span>
+            <span class="cap">CAS-E Visiting Fellow · FAU Erlangen-Nürnberg · Oct 2025–Feb 2026</span>
+            <span class="cap">D.Phil. Candidate · University of Hamburg</span>
+        </div>
+    </header>
+</div>
+
+<div class="rule-gold"></div>
+
+<!-- ABOUT -->
+<section id="about" style="background: var(--surface);">
+    <div class="outer">
+        <div class="about-head reveal">
+            <span class="sec-label">Bio</span>
+            <h2 class="sec-title">Philosophy of science, UAP Studies, and the institutions needed to make difficult subjects researchable.</h2>
+            <p class="sec-lead">A concise account of Cifone's work across philosophy of science, institution-building, and the emerging scholarly study of UAP.</p>
+        </div>
+
+        <div class="about-grid">
+            <aside class="dossier reveal">
+                <div class="dos-block">
+                    <h4>Education</h4>
+                    <p>Ph.D. and M.A., Philosophy<br>University of Maryland</p>
+                    <p>B.A. (Honors, Cum Laude), Philosophy<br>Elizabethtown College</p>
+                </div>
+                <div class="dos-block">
+                    <h4>Current Research</h4>
+                    <p>D.Phil. Candidate, Religious Studies<br>University of Hamburg</p>
+                    <p style="font-size:0.76rem; color:var(--text-tertiary);">Supervisor: Prof. Dr. Claudia Jahnel</p>
+                </div>
+                <div class="dos-block">
+                    <h4>Fellowship</h4>
+                    <p>CAS-E Visiting Fellow<br>FAU Erlangen-N&uuml;rnberg<br>Oct 2025 &ndash; Feb 2026</p>
+                </div>
+                <div class="dos-block">
+                    <h4>Institutions</h4>
+                    <a href="https://www.societyforuapstudies.org" target="_blank" rel="noopener">Society for UAP Studies &rarr;</a>
+                    <a href="https://limina.scholasticahq.com" target="_blank" rel="noopener">Limina &rarr;</a>
+                    <a href="https://entaus.blogspot.com" target="_blank" rel="noopener">ENTAUS &rarr;</a>
+                </div>
+                <div class="dos-block">
+                    <h4>Contact</h4>
+                    <a href="mailto:director@societyforuapstudies.org">director@societyforuapstudies.org</a>
+                    <a href="mailto:cifonemc@gmail.com">cifonemc@gmail.com</a>
+                </div>
+            </aside>
+
+            <div class="bio-compact reveal">
+                <p class="bio-summary"><strong>Michael Christian Cifone</strong> is a philosopher of science, editor, and academic organizer. His work began in the conceptual foundations of theoretical physics and now centers on the methodological, institutional, and philosophical conditions under which UAP and the broader empirical weird can become serious objects of scholarly inquiry.</p>
+
+                <div class="bio-facts">
+                    <div class="bio-fact">
+                        <span>Training</span>
+                        <p>Philosophy of science, quantum foundations, spacetime ontology, and scientific explanation.</p>
+                    </div>
+                    <div class="bio-fact">
+                        <span>Institutions</span>
+                        <p>Founder of the Society for UAP Studies and founding editor of <em>Limina</em>.</p>
+                    </div>
+                    <div class="bio-fact">
+                        <span>Research Program</span>
+                        <p>Develops the empirical weird, existential empiricism, and the conditions for a future science of UAP.</p>
+                    </div>
+                    <div class="bio-fact">
+                        <span>Teaching</span>
+                        <p>Adjunct Professor of Philosophy at St. John's University, with prior appointments across the U.S.</p>
+                    </div>
+                </div>
+
+                <p class="bio-note">In 2022, he founded SUAPS and launched <em>Limina: The Journal of UAP Studies</em>, treating academic infrastructure itself as part of the research problem: journals, conferences, standards, methods, and spaces of cross-disciplinary collaboration.</p>
+
+                <div class="bio-more" id="bio-more">
+                    <div class="bio-more-inner">
+                        <p>His early publications appeared in <em>Studies in the History and Philosophy of Modern Physics</em>, <em>Foundations of Physics</em>, and <em>Physics Essays</em>, focusing on the relational blockworld interpretation, spacetime ontology, and the philosophy of scientific explanation.</p>
+                        <p>His current work is organized around the <strong>empirical weird</strong>: phenomena that resist simple placement within established categories of the physical, psychological, cultural, and religious. This anchors the research program <em>Prolegomena to Any Future Science of UAP</em>.</p>
+                        <p>From October 2025 to February 2026, he served as a CAS-E Visiting Fellow at Friedrich-Alexander Universit&auml;t Erlangen-N&uuml;rnberg. He is concurrently pursuing a D.Phil. in Religious Studies at the University of Hamburg, developing an account of religion in relation to the sacred understood as empirical.</p>
+                    </div>
+                </div>
+
+                <button class="bio-toggle" id="bio-toggle" onclick="toggleBio()">
+                    <span id="btxt">Read more</span> <span class="arr" id="barr">↓</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ROLES -->
+<section id="roles" style="background: var(--bg);">
+    <div class="outer reveal">
+        <span class="sec-label">Where the work happens</span>
+        <h2 class="sec-title">Current Positions</h2>
+        <p class="sec-lead">Spanning institution-building, editorial leadership, doctoral research, and teaching.</p>
+        <div class="roles-grid">
+            <div class="role-card">
+                <span class="rc-label">Institutional Leadership</span>
+                <h3>Founding Executive Director & President</h3>
+                <p>Society for UAP Studies (SUAPS) — directing research programs, conferences, publications, and the Society's three Strategic Institutional Research Initiatives across philosophy, forensic science, and physical instrumentation.</p>
+            </div>
+            <div class="role-card">
+                <span class="rc-label">Editorial</span>
+                <h3>Founding Editor-in-Chief</h3>
+                <p><em>Limina: The Journal of UAP Studies</em> — currently the only peer-reviewed academic journal devoted to the scholarly study of UAP. Draws together scholars from the physical and social sciences, humanities, and philosophy of science.</p>
+            </div>
+            <div class="role-card">
+                <span class="rc-label">Fellowship (Oct 2025 – Feb 2026)</span>
+                <h3>CAS-E Visiting Fellow</h3>
+                <p>Center for Advanced Studies "Alternative Rationalities and Esoteric Practices in Global Perspective," Friedrich-Alexander Universität Erlangen-Nürnberg. Began work on a monograph on foundational ideas in UAP Studies, with focus on the thought of Jacques Vallée. CAS-E II fellowship application in progress.</p>
+            </div>
+            <div class="role-card">
+                <span class="rc-label">Doctoral Research</span>
+                <h3>D.Phil. Candidate</h3>
+                <p>Religious Studies, University of Hamburg. Dissertation developing a new theoretical account of religion in relation to the sacred conceived as empirical — extending earlier work in philosophy of science into the phenomenology of religious experience.</p>
+            </div>
+            <div class="role-card">
+                <span class="rc-label">Teaching</span>
+                <h3>Adjunct Professor of Philosophy</h3>
+                <p>St. John's University, Queens, New York (2017–present). Prior appointments at CUNY Bronx Community College, Gwynedd-Mercy University, Manhattan College, University of San Francisco, Drexel University, and others across the U.S.</p>
+            </div>
+            <div class="role-card">
+                <span class="rc-label">Forthcoming — September 2026</span>
+                <h3>Invited Lecturer: Copenhagen & Lund</h3>
+                <p>Invited to present his emerging UAP research program at the University of Copenhagen (humanities faculty, hosted by the Danish Network for UAP Studies) and at Lund University's Anomalous Agenda Advanced Study Group.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- RESEARCH PROGRAM -->
+<section id="research-program" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">Prolegomena to Any Future Science of UAP</span>
+        <h2 class="sec-title">An Emerging Research Program</h2>
+        <p class="sec-lead">A systematic philosophical, methodological, and formal inquiry into the conditions under which an adequate science of UAP could be constituted.</p>
+
+        <div class="rp-box">
+            <p><strong><em>Prolegomena to Any Future Science of UAP</em></strong> begins from a simple claim: the UAP problem is not one problem. It is at least three problems operating at different levels of analysis, and the field's failure to produce cumulative knowledge reflects not merely a lack of data, but the absence of the institutional conditions, methodological frameworks, and conceptual tools required to gather and interpret that data adequately.</p>
+        </div>
+
+        <div class="rp-levels">
+            <div class="rp-level">
+                <span class="lv">Level One — Socio-Historical</span>
+                <h4>The Political Economy of Knowledge</h4>
+                <p>Maps the governance of UAP inquiry: the emerging nexus of defense offices, private contractors, and defense-adjacent academic actors, together with the forensic loop, evidentiary regimes, and forms of privatized legitimacy that prevent serious inquiry from becoming institutionally stable.</p>
+            </div>
+            <div class="rp-level">
+                <span class="lv">Level Two — Methodological</span>
+                <h4>Existential Empiricism</h4>
+                <p>Develops a standpoint grounded in William James's radical empiricism and extended through contemporary philosophy of mind, asking what a science adequate to the full range of UAP phenomena — including extreme experiential cases — would actually have to look like.</p>
+            </div>
+            <div class="rp-level">
+                <span class="lv">Level Three — Formal</span>
+                <h4>The Metalogical Space</h4>
+                <p>Draws on Harald Atmanspacher's generalized quantum theory and dual-aspect monism to characterize cases where neither purely physical nor purely psychological descriptions are sufficient, and where physical-experiential correlations resist decomposition into independent components.</p>
+            </div>
+        </div>
+
+        <div class="rp-taxonomy">
+            <div class="rp-tax-copy">
+                <h3>The Research Triangle</h3>
+                <p>The program distinguishes between the <strong>Plane of Affect</strong>, where UAP appears as an administered cultural and political object, and the <strong>Plane of Empiricism</strong>, where it appears as a candidate object of a science not yet made. Its central claim is that an adequate research order must hold both planes at once.</p>
+                <p>The <strong>Research Triangle</strong> maps the literature across three primary zones — governance, empirical study, and formal theory — while locating <strong>Zone D</strong> along a liminal axis that cuts across, and stands at a right angle to, that triangular plane. Cifone's distinctive contribution is the explicit naming and theorizing of this liminal interior.</p>
+            </div>
+            <div class="rp-diagram" aria-label="Research Triangle diagram showing Zones A, B, C, and liminal Zone D">
+                <svg viewBox="0 0 320 300" role="img">
+                    <defs>
+                        <linearGradient id="rpGold" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#A07820" stop-opacity="0.22" />
+                            <stop offset="100%" stop-color="#7A5C0C" stop-opacity="0.05" />
+                        </linearGradient>
+                    </defs>
+                    <polygon points="64,198 256,198 160,250" fill="#F8F6F1" stroke="#C8C5BB" stroke-width="1.2" />
+                    <line x1="160" y1="72" x2="64" y2="198" stroke="#A07820" stroke-width="1.1" stroke-opacity="0.55" />
+                    <line x1="160" y1="72" x2="256" y2="198" stroke="#A07820" stroke-width="1.1" stroke-opacity="0.55" />
+                    <line x1="160" y1="72" x2="160" y2="250" stroke="#A07820" stroke-width="1.1" stroke-opacity="0.42" />
+                    <line x1="160" y1="72" x2="160" y2="216" stroke="#7A5C0C" stroke-width="0.9" stroke-dasharray="4 5" stroke-opacity="0.55" />
+                    <polygon points="160,72 64,198 256,198" fill="url(#rpGold)" stroke="#A07820" stroke-width="0.8" stroke-opacity="0.45" />
+                    <circle cx="64" cy="198" r="5" fill="#7A5C0C" fill-opacity="0.76" />
+                    <circle cx="256" cy="198" r="5" fill="#7A5C0C" fill-opacity="0.76" />
+                    <circle cx="160" cy="250" r="5" fill="#7A5C0C" fill-opacity="0.76" />
+                    <circle cx="160" cy="72" r="6" fill="#A07820" fill-opacity="0.88" />
+                    <circle cx="160" cy="216" r="3" fill="#C8C5BB" fill-opacity="0.9" />
+                    <text x="64" y="181" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A5C0C">A</text>
+                    <text x="256" y="181" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A5C0C">B</text>
+                    <text x="160" y="274" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" fill="#7A5C0C">C</text>
+                    <text x="160" y="52" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="12" fill="#7A5C0C">D</text>
+                    <text x="64" y="216" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#56524A">Governance</text>
+                    <text x="256" y="216" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#56524A">Empirical</text>
+                    <text x="160" y="292" text-anchor="middle" font-family="EB Garamond, serif" font-size="12" fill="#56524A">Formal</text>
+                    <text x="160" y="32" text-anchor="middle" font-family="EB Garamond, serif" font-size="13" fill="#18160F">Liminal Interior</text>
+                    <text x="178" y="142" font-family="JetBrains Mono, monospace" font-size="8" fill="#96928A" transform="rotate(90 178 142)">right-angle axis</text>
+                </svg>
+                <p class="diagram-caption">Zone D as a liminal axis above the A–B–C research plane</p>
+            </div>
+        </div>
+
+        <div class="rp-zone-grid">
+            <div class="rp-zone">
+                <span class="zone-kicker">Zone A</span>
+                <h4>Governance of Anomaly</h4>
+                <p>Socio-historical, political, and STS-inflected work on how anomalous objects are administered, authorized, denied, or absorbed by institutions.</p>
+            </div>
+            <div class="rp-zone">
+                <span class="zone-kicker">Zone B</span>
+                <h4>Empirical Study of the Phenomena</h4>
+                <p>Scientific, observational, forensic, and instrumentation-centered work directed toward the phenomena as objects of investigation.</p>
+            </div>
+            <div class="rp-zone">
+                <span class="zone-kicker">Zone C</span>
+                <h4>Philosophical &amp; Formal Framework</h4>
+                <p>Methodological and theoretical work on evidence, ontology, explanation, mind-matter relations, and the formal representation of anomalous correlations.</p>
+            </div>
+            <div class="rp-zone d-zone">
+                <span class="zone-kicker">Zone D</span>
+                <h4>The Liminal Interior</h4>
+                <p>Work that refuses to settle fully onto either plane, exemplified by Pasulka, Kripal, and Vallée, and by the unresolved interior where event, experience, symbol, and institution remain entangled.</p>
+            </div>
+        </div>
+
+        <div class="rp-box">
+            <p>Level Two gives this taxonomy empirical bite through six developing postulates drawn from the structure of the evidence, including the rejection of classical separability assumptions, the semiotic character of anomalous phenomena, and the observer-transformation effect. Level Three then asks what formal architecture would be required for cases in which the physical and experiential dimensions cannot be cleanly separated.</p>
+        </div>
+
+        <div class="rp-frontiers">
+            <h3>Open Frontiers</h3>
+            <p>Five current research fronts give the program its next phase: experimental design, genealogy, religious experience, the excessive remainder, and the artifact interpretation problem.</p>
+            <div class="rp-frontier-grid">
+                <div class="rp-frontier"><span>01</span>Experimental design for entangled-observer conditions.</div>
+                <div class="rp-frontier"><span>02</span>The genealogy of the psychical response to UAP.</div>
+                <div class="rp-frontier"><span>03</span>UAP encounters and the phenomenology of religious experience.</div>
+                <div class="rp-frontier"><span>04</span>The tripartite structure of the excessive remainder beyond mind and matter.</div>
+                <div class="rp-frontier"><span>05</span>The artifact interpretation problem: how to reason about possible designed objects operating from an unknown technological base.</div>
+            </div>
+        </div>
+
+        <div class="rp-box">
+            <p>The governing stance is <strong><em>disciplined suspension</em></strong>: holding the field's deepest questions genuinely open while actively building the institutional and conceptual conditions under which they might eventually be answered. SUAPS and <em>Limina</em> are not merely platforms for this program; they are part of the argument itself — an attempt to build, in practice, the independent scholarly infrastructure that the program's Level One analysis identifies as a precondition for an adequate science.</p>
+        </div>
+    </div>
+</section>
+
+<!-- PRESS -->
+<section id="press" style="background: var(--bg);">
+    <div class="outer reveal">
+        <span class="sec-label">The field in the public conversation</span>
+        <h2 class="sec-title">Press & Media</h2>
+        <p class="sec-lead">A sustained presence in national and international coverage of UAP Studies as an emerging scholarly discipline.</p>
+
+        <div class="press-grid">
+            <div class="press-card">
+                <blockquote>Cifone is hoping the study of UAPs can become the subject of serious, rigorous academic study, with the same scientific objectivity of any discipline. The Society for UAP Studies knows it's a tall order that requires an open mind and an unusual amount of collaboration.</blockquote>
+                <p class="press-src"><a href="https://www.usatoday.com/story/news/nation/2025/12/09/ufo-uap-studies-academia-scholars/76777960007/" target="_blank" rel="noopener">USA Today</a> · "Time To Get Real On UFOs" · Front Page · December 9, 2025</p>
+            </div>
+            <div class="press-card">
+                <blockquote>The handling of UAP within government — ultimately driven by national security priorities — operates on principles at odds with the inner operating directives of the sciences: free, open, and democratic exploration of self and world.</blockquote>
+                <p class="press-src"><a href="https://www.space.com/space-exploration/uap-witnesses-criticize-pentagon-ufo-office-in-congressional-hearing-for-using-science-and-coming-up-with-answers" target="_blank" rel="noopener">Space.com</a> · Congressional UAP Hearing Coverage · September 2025</p>
+            </div>
+            <div class="press-card">
+                <blockquote>His catch-all phrase — the empirical weird — encompasses things that blur the lines between the real and the possible: phenomena that defy easy explanation, including the spiritual, the paranormal, the parapsychological, and UAPs.</blockquote>
+                <p class="press-src"><a href="https://www.usatoday.com/story/news/nation/2025/12/09/ufo-uap-studies-academia-scholars/76777960007/" target="_blank" rel="noopener">USA Today</a> · December 9, 2025</p>
+            </div>
+            <div class="press-card">
+                <blockquote>The UAP problem is not a mystery with one answer, but rather a somewhat unstable and chaotic amalgam of many overlapping realities, complicated by the unfortunate facts of the modern bureaucratic national security state.</blockquote>
+                <p class="press-src"><a href="https://www.space.com/space-exploration/uap-witnesses-criticize-pentagon-ufo-office-in-congressional-hearing-for-using-science-and-coming-up-with-answers" target="_blank" rel="noopener">Space.com</a> · September 2025</p>
+            </div>
+        </div>
+
+        <div class="press-also">
+            <span class="press-also-label">Covered in</span>
+            <div class="outlet-strip">
+                <span class="outlet"><a href="https://www.newyorker.com/culture/annals-of-inquiry/whats-the-deal-with-ufos" target="_blank" rel="noopener">The New Yorker</a></span>
+                <span class="dot">·</span>
+                <span class="outlet">USA Today</span>
+                <span class="dot">·</span>
+                <span class="outlet">Space.com</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- BLOG -->
+<section id="blog" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">ENTAUS</span>
+        <h2 class="sec-title">Blog Highlights</h2>
+        <p class="sec-lead">Selected entries from ENTAUS, where Cifone pursues sustained critical interrogations of UAP, anomalous experience, scientific possibility, and the politics of knowledge.</p>
+
+        <div class="blog-grid">
+            <article class="blog-card reveal">
+                <span class="blog-date">May 2025</span>
+                <h3><a href="https://entaus.blogspot.com/2025/05/far-beyond-being-remiss-i-finally-find.html" target="_blank" rel="noopener">Back To Egging It</a></h3>
+                <p>A sharp critique of evidentiary shortcuts, citizen-science optics, psionics claims, and the need for shared methodological baselines in UAP research.</p>
+                <a class="blog-link" href="https://entaus.blogspot.com/2025/05/far-beyond-being-remiss-i-finally-find.html" target="_blank" rel="noopener">Read post &rarr;</a>
+            </article>
+            <article class="blog-card reveal">
+                <span class="blog-date">Jan 2025</span>
+                <h3><a href="https://entaus.blogspot.com/2025/01/returning-to-basics.html" target="_blank" rel="noopener">Returning To The Basics</a></h3>
+                <p>A programmatic statement on case reports, witness testimony, the limits of disclosure politics, and the need for independent empirical research.</p>
+                <a class="blog-link" href="https://entaus.blogspot.com/2025/01/returning-to-basics.html" target="_blank" rel="noopener">Read post &rarr;</a>
+            </article>
+            <article class="blog-card reveal">
+                <span class="blog-date">Nov 2023</span>
+                <h3><a href="https://entaus.blogspot.com/2023/11/rising-sun-in-ufo-firmament-reflections.html" target="_blank" rel="noopener">Rising Sun In The UFO Firmament</a></h3>
+                <p>Reflections on the Sol Foundation's inaugural symposium, the entanglement of celebrity and knowledge, and the politics of legitimacy in the field.</p>
+                <a class="blog-link" href="https://entaus.blogspot.com/2023/11/rising-sun-in-ufo-firmament-reflections.html" target="_blank" rel="noopener">Read post &rarr;</a>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">The written record</span>
+        <h2 class="sec-title">Publications</h2>
+        <p class="sec-lead">Spanning foundations of physics, philosophy of science, critical theory, and the emerging science of UAP.</p>
+
+        <div class="pub-group">
+            <p class="pub-group-label">Articles & Editorials</p>
+            <div class="pub-item">
+                <span class="pub-yr">2025</span>
+                <div>
+                    <p class="pub-title"><a href="https://mindfieldbulletin.org/excessive-remainder-scienti%EF%AC%81c-possibility-epistemic-limits-and-the-ufo-experience/" target="_blank" rel="noopener">Excessive Remainder: Scientific Possibility, Epistemic Limits, and the UFO Experience</a></p>
+                    <p class="pub-venue"><em>Mindfield: Bulletin of the Parapsychological Association</em> 17(1). June 13, 2025.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2025</span>
+                <div>
+                    <p class="pub-title"><a href="https://doi.org/10.1016/j.paerosci.2025.101097" target="_blank" rel="noopener">The New Science of Unidentified Aerospace-Undersea Phenomena (UAP)</a> <span class="tag tag-gold">Featured</span></p>
+                    <p class="pub-venue"><em>Progress in Aerospace Sciences</em> 156 (2025): 101097. DOI: 10.1016/j.paerosci.2025.101097</p>
+                    <p class="pub-venue pub-coauth">With Kevin H. Knuth, Philippe Ailleris, Garry P. Nolan, Wesley A. Watters, et al.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2025</span>
+                <div>
+                    <p class="pub-title"><a href="https://limina.scholasticahq.com" target="_blank" rel="noopener">Editorial</a></p>
+                    <p class="pub-venue"><em>Limina — The Journal of UAP Studies</em> 2(1): 6–11.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2024</span>
+                <div>
+                    <p class="pub-title"><a href="https://limina.scholasticahq.com/article/92781-editorial" target="_blank" rel="noopener">Editorial (Inaugural Issue)</a></p>
+                    <p class="pub-venue"><em>Limina — The Journal of UAP Studies</em> 1(1): 3–7.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2022</span>
+                <div>
+                    <p class="pub-title">Transcendental Skepticism</p>
+                    <p class="pub-venue"><em>The SCU Review</em>, No. 11. October 27, 2022.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2016</span>
+                <div>
+                    <p class="pub-title">Axioms in Z — Notes on a Scandalous Appropriation of Philosophy out of the Sublimity of the Thing (Parts I & II)</p>
+                    <p class="pub-venue"><em>International Journal of Žižek Studies</em> 10(1) and subsequent issue.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2014</span>
+                <div>
+                    <p class="pub-title">Nothingness and Science (A Propaedeutic)</p>
+                    <p class="pub-venue"><em>Cosmos and History: The Journal of Natural and Social Philosophy</em> 10(1): 253–274.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2008</span>
+                <div>
+                    <p class="pub-title">Why Quantum Mechanics Favors Adynamical and Acausal Interpretations such as Relational Blockworld over Backwardly Causal and Time-Symmetric Rivals</p>
+                    <p class="pub-venue"><em>Studies in the History and Philosophy of Modern Physics</em> 39(4): 736–751.</p>
+                    <p class="pub-venue pub-coauth">With Michael Silberstein and W.M. Stuckey.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2008</span>
+                <div>
+                    <p class="pub-title">Reconciling Spacetime and the Quantum: Relational Blockworld and the Quantum Liar Paradox</p>
+                    <p class="pub-venue"><em>Foundations of Physics</em> 38(4): 348–383.</p>
+                    <p class="pub-venue pub-coauth">With W.M. Stuckey and Michael Silberstein.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub-group">
+            <p class="pub-group-label">Forthcoming in Print</p>
+            <div class="pub-item">
+                <span class="pub-yr">forthc.</span>
+                <div>
+                    <p class="pub-title">Fire In The Sky: UAP, Climate Change and the Political Economic Future of Human Society <span class="tag tag-forthcoming">Forthcoming</span></p>
+                    <p class="pub-venue">For an edited volume. Stanford University Press, anticipated 2027.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">forthc.</span>
+                <div>
+                    <p class="pub-title">It's All About the Evidence — But What Is the Evidence? A Philosophical Inquiry Into the Problem of UFO Evidence <span class="tag tag-forthcoming">Forthcoming</span></p>
+                    <p class="pub-venue">For <em>UFOs in Academia: 21st Century Perspectives</em>. Syracuse University Press.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">in prep.</span>
+                <div>
+                    <p class="pub-title">Rational Responses To Extraordinary Hypotheses</p>
+                    <p class="pub-venue">In preparation.</p>
+                    <p class="pub-venue pub-coauth">With Kevin Knuth and Wesley Watters.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pub-group">
+            <p class="pub-group-label">Working Papers & Critical Essays</p>
+            <div class="pub-item">
+                <span class="pub-yr">2025/26</span>
+                <div>
+                    <p class="pub-title">Into the 'Workshop' of Being: The Place and Necessity of Theology and the Religious in the UFO Experience <span class="tag tag-grey">Working Paper</span></p>
+                    <p class="pub-venue">Draft essay on religious studies, theology, and the UFO experience.</p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2025/26</span>
+                <div>
+                    <p class="pub-title">The Emerging UAP Nexus: National Security, Privatized Legitimacy, and the Reorganization of the Unknown <span class="tag tag-grey">Working Paper</span> <span class="tag tag-grey">Critical Essay</span></p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2025/26</span>
+                <div>
+                    <p class="pub-title">The Affect of the Impossible: UAP and the Deterritorialization of Knowledge <span class="tag tag-grey">Working Paper</span></p>
+                </div>
+            </div>
+            <div class="pub-item">
+                <span class="pub-yr">2025</span>
+                <div>
+                    <p class="pub-title">Existential Empiricism: A Proposed Framework for the Science of Mind, Matter, and Anomalous Phenomena <span class="tag tag-grey">Working Paper</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SIRIs -->
+<section id="siri" style="background: var(--bg);">
+    <div class="outer reveal">
+        <span class="sec-label">SUAPS Department of Research</span>
+        <h2 class="sec-title">Strategic Institutional Research Initiatives</h2>
+        <p class="sec-lead">Three interlinked programs that Cifone initiated and spearheads under the Society for UAP Studies, each addressing a distinct foundational problem in the field.</p>
+        <div class="siri-grid">
+            <div class="siri-card">
+                <span class="siri-cluster">Phenomenology & Philosophy of Science</span>
+                <h3>Empirical Weird Initiative</h3>
+                <p>Anchored in Cifone's concept of the "empirical weird," Phase 1 launched at the Prolegomena Retreat in Porto, Portugal, May 28–June 1, 2026. Fifteen researchers across philosophy, cognitive science, and physical science met to lay the groundwork for a new methodological framework addressing the ontological-interface problem at the heart of anomalous phenomena. Initiated and directed by Cifone; conducted under the auspices of SUAPS.</p>
+                <p class="siri-status">Phase 1 <span>Complete</span> · Phase 2 in Development</p>
+                <a href="https://suaps-director.github.io/empirical-weird-initiative/" target="_blank" rel="noopener" class="siri-link">Visit EWI Site →</a>
+            </div>
+            <div class="siri-card">
+                <span class="siri-cluster">Forensic Science</span>
+                <h3>Forensic Methodologies Initiative</h3>
+                <p>Addresses the chain-of-evidence problem in UAP research through rigorous application of forensic scientific standards. Led by PI Joshua Pierson and co-lead Dr. Eric Halford under SUAPS's Department of Research, the initiative is conducting a systematic Freedom of Information campaign targeting approximately 100 organizations across 30+ countries. Conceived and initiated by Cifone as part of the Society's research portfolio.</p>
+                <p class="siri-status">Phase 2 <span>Active</span> · FOI Campaign Underway</p>
+                <a href="https://suaps-director.github.io/uap-forensic-methodologies/" target="_blank" rel="noopener" class="siri-link">Visit Initiative Site →</a>
+            </div>
+            <div class="siri-card">
+                <span class="siri-cluster">Instrumentation & Signal Detection</span>
+                <h3>UAP Standards of Evidence</h3>
+                <p>Modeled on the astrobiology community's biosignature standards of evidence framework, this initiative convenes approximately 55 researchers across astrophysics, data science, philosophy of science, sociology, and information science to develop a rigorous, community-grounded evidentiary framework for UAP science. Organizing team includes Dr. Gretchen Stahlman (FSU), Dr. Laura Dominé (Harvard-Smithsonian CfA), Dr. Tim Spuck (AUI), and Dr. Giovanna Pugliese (UvA). Coordinated by Cifone through SUAPS. Next milestone: AstroAccel Innovation Summit, Lisbon, August 2026.</p>
+                <p class="siri-status">Organizing Phase · AstroAccel 2026 Ahead</p>
+                <a href="https://suaps-director.github.io/uap-standards-of-evidence/" target="_blank" rel="noopener" class="siri-link">Visit SOE Site →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRESENTATIONS -->
+<section id="presentations" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">Where ideas travel</span>
+        <h2 class="sec-title">Selected Talks & Lectures</h2>
+        <p class="sec-lead">Invited lectures and conference presentations across four continents, spanning philosophy of science, UAP studies, and critical theory.</p>
+
+        <div class="pres-item">
+            <span class="pres-yr">Sept 2026</span>
+            <div>
+                <p class="pres-title">Prolegomena to Any Future Science of UAP: An Exposition <span class="ptag ptag-up">Forthcoming</span></p>
+                <p class="pres-venue">Invited Lecture · University of Copenhagen, Humanities Faculty · September 1–2, 2026. Hosted by the Danish Network for UAP Studies (DNUS) and Aaron French. Organized by Frederik Uldall.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Sept 2026</span>
+            <div>
+                <p class="pres-title">Prolegomena to Any Future Science of UAP: An Exposition <span class="ptag ptag-up">Forthcoming</span></p>
+                <p class="pres-venue">Invited Lecture · Anomalous Agenda Advanced Study Group, Lund University · September 3–4, 2026. Invited by Dr. Anders Warell and Dr. Melina (Lund University).</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">July 2026</span>
+            <div>
+                <p class="pres-title">The Future of UAP Science: Challenges and Prospects <span class="ptag ptag-up">Forthcoming</span></p>
+                <p class="pres-venue">Invited Panelist · SCU Annual Conference, Toronto, Canada · July 27, 2026.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">June 2026</span>
+            <div>
+                <p class="pres-title">UAP Disclosure Forum <span class="ptag ptag-ev">Special Invited Guest</span></p>
+                <p class="pres-venue">U.S. Capitol Building (Kennedy Caucus Room), Washington D.C. · June 25, 2026. Full-day event convening congressional leaders, former intelligence officials, scientists, and policy analysts.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Sept 2025</span>
+            <div>
+                <p class="pres-title">It's All About the Evidence. But What's the Evidence?</p>
+                <p class="pres-venue">IFEX SETI & UAP Conference · Universität Würzburg, Germany · September 2025.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Aug 2025</span>
+            <div>
+                <p class="pres-title">It's All About the Evidence. But What's the Evidence?</p>
+                <p class="pres-venue">Flash talk · UAP Data Workshop hosted by AUI with support from AARO (U.S. Dept. of Defense) · Vienna, Virginia · August 4–6, 2025.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Apr 2025</span>
+            <div>
+                <p class="pres-title">Actuality Implies Possibility: The Possibilities and Impossibilities of a New Science of UAP</p>
+                <p class="pres-venue">The UFO and the Impossible: Archives of the Impossible Conference 2025 · Rice University, Houston, Texas · April 3–5, 2025.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Apr 2025</span>
+            <div>
+                <p class="pres-title">Down To Earth: Characterizing the Landscape of (Scientific) UAP Studies</p>
+                <p class="pres-venue">Grounding the SETI and UAP Debate: Law, Evidence and Anticipated Futures · Durham University Law School · April 24–25, 2025.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Sept 2024</span>
+            <div>
+                <p class="pres-title">Beyond Cold Cases: Bringing the Science of UAP Down To Earth</p>
+                <p class="pres-venue">Social and Ethical Frontiers in Space 2024, EAI/SSoCIA · Kiruna, Sweden · September 22–26, 2024. With Wesley Watters, Wellesley College.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Oct 2024</span>
+            <div>
+                <p class="pres-title">Anomalous Trajectories: Charting A Course from the New Science of UAP to Anomalistics</p>
+                <p class="pres-venue">IGPP Colloquia Series · Freiburg, Germany · October 2024 (online).</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Mar 2023</span>
+            <div>
+                <p class="pres-title">Fire In the Sky: UFOs, Climate Change and the Political-Economic Future of Human Society</p>
+                <p class="pres-venue">Bringing SETI Home: National Security and the Politics of UFO Disclosure · Mershon Center, Ohio State University · March 13–14, 2023.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Nov 2010</span>
+            <div>
+                <p class="pres-title">Being and Becoming: A Dialogue Between Relational Blockworld and the Implicate Order <span class="ptag ptag-inv">Invited · Honorarium</span></p>
+                <p class="pres-venue">Toward An Algebra of Process: A Symposium in Honor of Basil J. Hiley · Helsinki, Finland.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Jul 2005</span>
+            <div>
+                <p class="pres-title">Minkowski Meets Hilbert in a Relational Blockworld <span class="ptag ptag-inv">Invited · Honorarium</span></p>
+                <p class="pres-venue">Time Symmetric Approaches to Quantum Mechanics · Centre for Time, University of Sydney. Keynote: Nobel Laureate Sir Anthony Leggett.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FELLOWSHIPS -->
+<section id="fellowships" style="background: var(--bg);">
+    <div class="outer reveal">
+        <span class="sec-label">Academic record</span>
+        <h2 class="sec-title">Fellowships & Distinctions</h2>
+        <ul class="cv-list">
+            <li class="cv-item"><span class="cv-date">2025–26</span><div><p class="cv-title">CAS-E Visiting Fellowship (October 2025 – February 2026)</p><p class="cv-sub">Center for Advanced Studies "Alternative Rationalities and Esoteric Practices in Global Perspective," FAU Erlangen-Nürnberg</p></div></li>
+            <li class="cv-item"><span class="cv-date">2006 · 2005</span><div><p class="cv-title">Department of Philosophy Summer Research Scholarship</p><p class="cv-sub">University of Maryland</p></div></li>
+            <li class="cv-item"><span class="cv-date">2005</span><div><p class="cv-title">Distinguished Teaching Assistant Award</p><p class="cv-sub">Center for Teaching Excellence, University of Maryland</p></div></li>
+            <li class="cv-item"><span class="cv-date">2002</span><div><p class="cv-title">Brian Hull Fellowship for Best First Year Graduate Student</p><p class="cv-sub">Dept. of Philosophy, University of Maryland</p></div></li>
+            <li class="cv-item"><span class="cv-date">2006</span><div><p class="cv-title">Jacob K. Goldhaber Travel Grant</p><p class="cv-sub">University of Maryland</p></div></li>
+            <li class="cv-item"><span class="cv-date">2004</span><div><p class="cv-title">National Science Foundation Young Researcher's Grant</p><p class="cv-sub">Travel and Presentation Award</p></div></li>
+        </ul>
+    </div>
+</section>
+
+<!-- PODCASTS & VIDEO -->
+<section id="media" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">In conversation</span>
+        <h2 class="sec-title">Podcasts & Video</h2>
+        <p class="sec-lead">Selected podcast appearances, radio segments, and video interviews on the foundations, politics, and future of UAP Studies.</p>
+
+        <div class="pres-item">
+            <span class="pres-yr">Apr 2026</span>
+            <div>
+                <p class="pres-title"><a href="https://www.youtube.com/live/b4ZEnZMRCCw" target="_blank" rel="noopener">Skepticism and the New Science of UAP</a></p>
+                <p class="pres-venue">SUAPS UAP Studies Seminar Series &middot; Society for UAP Studies &middot; April 16, 2026. Livestreamed lecture on the epistemological challenges confronting the emerging science of UAP.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Nov 2025</span>
+            <div>
+                <p class="pres-title"><a href="https://www.youtube.com/watch?v=dFrNX0aOWkE" target="_blank" rel="noopener">The New Science of Non-Human Intelligence (Parts 1 & 2)</a></p>
+                <p class="pres-venue"><em>EMERGENT</em> podcast &middot; November 2025. Extended conversation on the methodological, philosophical, and institutional challenges involved in building a rigorous science of non-human intelligence.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Oct 2024</span>
+            <div>
+                <p class="pres-title"><a href="https://www.youtube.com/watch?v=sEJolngi00o" target="_blank" rel="noopener">Dr. Michael Cifone &mdash; Society for UAP Studies Co-Founder</a></p>
+                <p class="pres-venue"><em>WTUFO</em> S2E9 &middot; October 18, 2024. Long-form interview on philosophy of science, SUAPS, <em>Limina</em>, and the challenges of developing UAP as a legitimate subject for contemporary research.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">Jan 2023</span>
+            <div>
+                <p class="pres-title"><a href="https://www.coasttocoastam.com/show/2023-01-15-show/" target="_blank" rel="noopener">UAP Research / Historical Alien Beliefs</a></p>
+                <p class="pres-venue"><em>Coast to Coast AM</em> &middot; hosted by George Knapp &middot; January 15, 2023. Cifone joined in the first half to discuss academic debate and dialogue in the UFO field; Chris Aubeck followed in the latter half on historical alien beliefs.</p>
+            </div>
+        </div>
+        <div class="pres-item">
+            <span class="pres-yr">2025</span>
+            <div>
+                <p class="pres-title">Toward A Science of Nonhuman Intelligence</p>
+                <p class="pres-venue">Inaugural Lecture (online) &middot; The Human Institute &middot; 2025.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background: var(--surface);">
+    <div class="outer reveal">
+        <span class="sec-label">Get in touch</span>
+        <h2 class="sec-title">Inquiries & Collaborations</h2>
+        <p class="sec-lead">Speaking invitations, editorial and research collaborations, fellowship enquiries, and press contacts are all welcome.</p>
+        <div class="contact-grid">
+            <div class="contact-col">
+                <h3>Professional</h3>
+                <p>Institutional enquiries, research collaborations, editorial correspondence, and speaking invitations should be directed to the Society for UAP Studies address.</p>
+                <a href="mailto:director@societyforuapstudies.org" class="btn-gold">director@societyforuapstudies.org</a>
+            </div>
+            <div class="contact-col">
+                <h3>Personal</h3>
+                <p>Personal correspondence, media requests, and academic networking through the personal address.</p>
+                <a href="mailto:cifonemc@gmail.com" class="btn-gold">cifonemc@gmail.com</a>
+            </div>
+        </div>
+        <div style="margin-top:48px; padding-top:32px; border-top:1px solid var(--border);">
+            <p style="font-family:'JetBrains Mono',monospace; font-size:0.59rem; text-transform:uppercase; letter-spacing:0.16em; color:var(--text-tertiary); margin-bottom:12px;">Professional Affiliations</p>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span class="cap">Society for UAP Studies (Founder)</span>
+                <span class="cap">Scientific Coalition for UAP Studies</span>
+                <span class="cap">Philosophy of Science Association</span>
+                <span class="cap">Society for European Philosophy</span>
+                <span class="cap">Forum for European Philosophy</span>
+                <span class="cap">American Philosophical Association</span>
+                <span class="cap">International Society for Advanced Study of Spacetime</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="foot-inner">
+        <p>© 2026 Michael Christian Cifone · All Rights Reserved</p>
+        <div class="foot-links">
+            <a href="https://www.societyforuapstudies.org" target="_blank" rel="noopener">SUAPS</a>
+            <a href="https://limina.scholasticahq.com" target="_blank" rel="noopener">Limina</a>
+            <a href="https://entaus.blogspot.com" target="_blank" rel="noopener">ENTAUS</a>
+            <a href="https://suaps-director.github.io/empirical-weird-initiative/" target="_blank" rel="noopener">EWI</a>
+            <a href="mailto:director@societyforuapstudies.org">Contact</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleBio() {
+        const m = document.getElementById('bio-more');
+        const t = document.getElementById('bio-toggle');
+        const tx = document.getElementById('btxt');
+        const ar = document.getElementById('barr');
+        const open = m.classList.toggle('open');
+        t.classList.toggle('open', open);
+        tx.textContent = open ? 'Read less' : 'Read more';
+        ar.textContent = open ? '↑' : '↓';
+    }
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    document.querySelectorAll('.roles-grid, .siri-grid, .press-grid').forEach(g => {
+        g.querySelectorAll('.role-card, .siri-card, .press-card').forEach((c, i) => {
+            c.style.transitionDelay = `${i * 0.055}s`;
+            c.classList.add('reveal');
+            io.observe(c);
+        });
+    });
+</script>
+</body>
+</html>
